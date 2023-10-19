@@ -14,11 +14,14 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import java.math.BigInteger;
 import java.time.LocalDateTime;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component
 public class DataLoader {
+    private static final Logger logger = LoggerFactory.getLogger(DataLoader.class);
 
     // member 의존성
 //    @Autowired
@@ -52,7 +55,7 @@ public class DataLoader {
         createTechStacks();
 
         // study
-        createStudyMembers();
+//        createStudyMembers();
         createStudies();
 //        createStudyReviews();
 //        createStudySchedulRepositories();
@@ -61,25 +64,31 @@ public class DataLoader {
     // member
 
     private void createMembers() {
-        Member alice = Member.builder()
-                .email("alice@example.com")
-                .name("Alice")
-                .nickname("alice123")
-                .password("password")
-                .registrationDate(LocalDateTime.now())
-                .build();
+        try {
+            Member alice = Member.builder()
+                    .email("alice@example.com")
+                    .name("Alice")
+                    .nickname("alice123")
+                    .password("password")
+                    .registrationDate(LocalDateTime.now())
+                    .build();
 
-        memberRepository.save(alice);
+            memberRepository.save(alice);
+            logger.info("Member Alice saved.");
 
-        Member bob = Member.builder()
-                .email("bob@example.com")
-                .name("Bob")
-                .nickname("bob123")
-                .password("password")
-                .registrationDate(LocalDateTime.now())
-                .build();
+            Member bob = Member.builder()
+                    .email("bob@example.com")
+                    .name("Bob")
+                    .nickname("bob123")
+                    .password("password")
+                    .registrationDate(LocalDateTime.now())
+                    .build();
 
-        memberRepository.save(bob);
+            memberRepository.save(bob);
+            logger.info("Member Bob saved.");
+        } catch (Exception e) {
+            logger.error("Error occurred while creating members.", e);
+        }
     }
 
 //    private void createPeerReviews() {
@@ -130,30 +139,63 @@ public class DataLoader {
 
     // study
     private void createStudies() {
-        Study study = new Study();
-        study.setStudyTitle("Java Study Group");
-        study.setSummary("Group to study Java together");
-        study.setContent("We focus on Java core and advance topics");
-        study.setCreatedAt(LocalDateTime.now());
-        study.setDeadline(LocalDateTime.now().plusMonths(1));
-        studyRepository.save(study);
+        // 첫 번째 스터디 인스턴스 생성
+        Study javaStudy = Study.builder()
+                .studyTitle("Java Study Group")
+                .summary("A group dedicated to learning Java programming")
+                .content("We focus on both core and advanced Java topics.")
+                .memberNum((short) 20)
+                .category("Programming")
+                .views(0)
+                .studyStatus("recruiting")
+                .deadline(LocalDateTime.now().plusWeeks(2))
+                .startDate(LocalDateTime.now().plusDays(3))
+                .endDate(LocalDateTime.now().plusMonths(6))
+                .createdAt(LocalDateTime.now())
+                .build();
+
+        // 두 번째 스터디 인스턴스 생성
+        Study pythonStudy = Study.builder()
+                .studyTitle("Python for Data Science")
+                .summary("Learn Python programming and data analysis techniques")
+                .content("Focus on libraries like NumPy, Pandas, and Matplotlib")
+                .memberNum((short) 25)
+                .category("Data Science")
+                .views(0)
+                .studyStatus("recruiting")
+                .deadline(LocalDateTime.now().plusWeeks(4))
+                .startDate(LocalDateTime.now().plusDays(10))
+                .endDate(LocalDateTime.now().plusMonths(5))
+                .createdAt(LocalDateTime.now())
+                .build();
+
+        // 스터디 인스턴스를 저장소에 저장
+        studyRepository.save(javaStudy);
+        studyRepository.save(pythonStudy);
+
+        System.out.println("Studies have been created and saved to the database.");
     }
 
-    private void createStudyMembers() {
-        Member member = memberRepository.findById(Long.valueOf(1L))
-                .orElseThrow(() -> new RuntimeException("멤버를 찾을 수 없습니다."));
 
-        Study study = studyRepository.findById(Long.valueOf(1L))
-                .orElseThrow(() -> new RuntimeException("스터디를 찾을 수 없습니다."));
+//    private void createStudyMembers() {
+//        Member member = memberRepository.findById(1L)
+//                .orElseThrow(() -> new RuntimeException("멤버를 찾을 수 없습니다."));
+//
+//        Study study = studyRepository.findById(1L)
+//                .orElseThrow(() -> new RuntimeException("스터디를 찾을 수 없습니다."));
+//
+//        StudyMember studyMember = StudyMember.builder()
+//                .study(study)
+//                .member(member)
+//                .memberType(MemberType.LEADER)
+//                .studyJoinDate(LocalDateTime.now())
+//                .build();
+//
+//        studyMemberRepository.save(studyMember);
+//
+//        System.out.println("Study member has been created and saved to the database.");
+//    }
 
-        StudyMember studyMember = new StudyMember();
-        studyMember.setStudy(study);
-        studyMember.setMember(member);
-        studyMember.setMemberType(MemberType.LEADER);
-        studyMember.setStudyJoinDate(LocalDateTime.now());
-
-        studyMemberRepository.save(studyMember);
-    }
 
 
 
