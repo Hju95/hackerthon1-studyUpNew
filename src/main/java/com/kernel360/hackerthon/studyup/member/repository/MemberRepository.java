@@ -12,16 +12,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member, BigInteger> {
-    Optional<Member> findById(BigInteger id);
+public interface MemberRepository extends JpaRepository<Member, Long> {
+    Optional<Member> findById(Long id);
 
     //List<Member> findByIdIn(List<BigInteger> memberIds);
 
     @Query("SELECT new com.kernel360.hackerthon.studyup.member.dto.MemberDTO(m.id, m.name, m.email) FROM Member m WHERE m.id IN :memberIds")
-    List<StudyMemberDTO> findDTOByMemberIds(@Param("memberIds") List<BigInteger> memberIds);
+    List<StudyMemberDTO> findDTOByMemberIds(@Param("memberIds") List<Long> memberIds);
 
 
     Member save(Member member);
 
-    Member findByNickName(String name);
+    Member findByNickname(String name);
 }

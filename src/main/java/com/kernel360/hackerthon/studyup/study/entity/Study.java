@@ -1,9 +1,6 @@
 package com.kernel360.hackerthon.studyup.study.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,15 +10,16 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Builder
+@Setter
 public class Study {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger studyId;
+    private Long studyId;
 
     @Column(nullable = false, length = 200)
     private String studyTitle;
@@ -40,10 +38,10 @@ public class Study {
 
     @Column(nullable = false)
     @ColumnDefault("0")
-    private Integer views;
+    private int views;  // Integer에서 int로 변경
 
     @Column(nullable = false)
-    @ColumnDefault("recruiting")
+    @ColumnDefault("'recruiting'")  // 따옴표 추가
     private String studyStatus;
 
     @Column(nullable = false)
@@ -62,6 +60,5 @@ public class Study {
     @UpdateTimestamp
     private LocalDateTime modifiedAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date deletedAt;
+    private LocalDateTime deletedAt;  // Date에서 LocalDateTime으로 변경
 }

@@ -1,9 +1,6 @@
 package com.kernel360.hackerthon.studyup.study.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,15 +9,16 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Builder
+@Setter
 public class StudyReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger studyReviewId;
+    private Long studyReviewId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_member_id", nullable = false)
@@ -31,10 +29,10 @@ public class StudyReview {
     private Study study;
 
     @Column(nullable = false)
-    private String reviewComments;
+    private String reviewComment; // 필드 이름 변경
 
     @Column(nullable = false)
-    private short studyRating;
+    private Short studyRating; // 데이터 타입을 short에서 Short로 변경
 
     @Column(nullable = false)
     @CreationTimestamp

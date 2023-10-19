@@ -1,9 +1,6 @@
 package com.kernel360.hackerthon.studyup.member.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -13,16 +10,17 @@ import java.util.Date;
 
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Builder
+@Setter
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger memberId;
+    private Long memberId;
 
-    @Column(length = 255, unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false, length = 20)

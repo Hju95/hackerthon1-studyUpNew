@@ -17,7 +17,7 @@ import java.util.List;
 @Builder
 public class StudyGroupDetailDTO {
 
-    private BigInteger studyId;
+    private Long studyId;
     private String studyTitle;
     private String summary;
     private String content;
@@ -30,7 +30,7 @@ public class StudyGroupDetailDTO {
     private LocalDateTime endDate;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-    private Date deletedAt;
+    private LocalDateTime deletedAt;
     private List<StudyMemberDTO> studyMembers;
 
     public StudyGroupDetailDTO(Study study, List<StudyMemberDTO> studyMemberDTOs) {

@@ -39,7 +39,7 @@ public class StudyController {
      */
     @GetMapping("/{study-id}")
     public ModelAndView getStudy(@PathVariable("study-id") Long studyId) {
-        StudyGroupDetailDTO studyGroupDetailDTO = studyService.getStudyById(BigInteger.valueOf(studyId));
+        StudyGroupDetailDTO studyGroupDetailDTO = studyService.getStudyById(studyId);
 
         ModelAndView view = new ModelAndView();
         // "study/studyList"로 페이지구조 변경 예정

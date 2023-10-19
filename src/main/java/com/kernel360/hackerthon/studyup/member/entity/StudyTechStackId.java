@@ -1,18 +1,22 @@
 package com.kernel360.hackerthon.studyup.member.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Embeddable
+@Getter
+@Setter
+@EqualsAndHashCode
 public class StudyTechStackId implements Serializable {
+    @Column(name = "study_id")
+    private Long studyId;
 
-    private BigInteger studyId;
-    private BigInteger stackId;
-
+    @Column(name = "tech_stack_id")
+    private Long techStackId;
 }

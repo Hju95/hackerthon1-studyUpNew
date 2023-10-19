@@ -1,10 +1,7 @@
 package com.kernel360.hackerthon.studyup.member.entity;
 
 import com.kernel360.hackerthon.studyup.study.entity.Study;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -12,16 +9,16 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Builder
+@Setter
 public class TechStack {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger stackId;
+    private Long stackId;
 
     @Column(nullable = false)
-    private String TechName;
-
+    private String techName;  // 필드명의 첫 글자를 소문자로 수정
 }

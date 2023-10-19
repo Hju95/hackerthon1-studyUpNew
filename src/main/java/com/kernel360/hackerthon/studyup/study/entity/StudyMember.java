@@ -1,25 +1,22 @@
-package com.kernel360.hackerthon.studyup.study.entity;
+package com.kernel360.hackerthon.studyup.study.entity;  // 패키지 이름은 예시입니다.
 
 import com.kernel360.hackerthon.studyup.member.entity.Member;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import com.kernel360.hackerthon.studyup.study.entity.MemberType;
+import lombok.*;
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.time.LocalDateTime;
-import java.util.Date;
 
-@Data
 @Entity
+@Table(name = "study_member")  // 테이블 이름 지정 (필요에 따라 변경 가능)
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Builder
+@Setter
 public class StudyMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger studyMemberId;
+    private Long studyMemberId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_id", nullable = false)
@@ -29,12 +26,15 @@ public class StudyMember {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
+    @Enumerated(EnumType.STRING)  // Enum 타입 사용
     @Column(nullable = false)
-    private Character memberType;
+    private MemberType memberType;  // Enum 타입으로 변경
 
     @Column(nullable = false)
     private LocalDateTime studyJoinDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date studyWithdrawalDate;
+    private LocalDateTime studyWithdrawalDate;  // Date에서 LocalDateTime으로 변경
 }
+
+// 추가: MemberType Enum
+

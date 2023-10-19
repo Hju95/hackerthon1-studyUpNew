@@ -20,7 +20,7 @@ public class MemberServiceImpl implements MemberService {
     // 종민
     @Override
     public Member getMemberByNickname(String nickname) {
-        memberRepository.findByNickName(nickname);
+        memberRepository.findByNickname(nickname);
         return null;
     }
 

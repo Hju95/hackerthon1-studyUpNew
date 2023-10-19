@@ -39,7 +39,7 @@ public class StudyServiceImpl implements StudyService {
     }
 
     @Override
-    public StudyGroupDetailDTO getStudyById(BigInteger studyId) {
+    public StudyGroupDetailDTO getStudyById(Long studyId) {
         // id로 Study를 조회
         Optional<Study> optionalStudy = studyRepository.findById(studyId);
 
@@ -50,7 +50,7 @@ public class StudyServiceImpl implements StudyService {
         if (optionalStudy.isPresent()) {
             Study study = optionalStudy.get();
 
-            List<BigInteger> memberIds = studyMemberRepository.findStudyMembersByStudyMemberId(studyId);
+            List<Long> memberIds = studyMemberRepository.findStudyMembersByStudyMemberId(studyId);
             //List<Member> studyMembers = memberRepository.findByIdIn(memberIds);
             List<StudyMemberDTO> studyMembers = memberRepository.findDTOByMemberIds(memberIds);
 
@@ -93,7 +93,7 @@ public class StudyServiceImpl implements StudyService {
     @Transactional
     public boolean joinStudy(Long studyId) {
         try {
-            Study study = studyRepository.findById(BigInteger.valueOf(studyId))
+            Study study = studyRepository.findById(studyId)
                     .orElseThrow(() -> new IllegalAccessException("스터디가 존재하지 않습니다."));
             // 멤버 정보 저장하는 로직
             studyRepository.save(study);
@@ -108,7 +108,7 @@ public class StudyServiceImpl implements StudyService {
     // 0: 업데이트 반영 실패
     @Override
     public int updateStudy(Long studyId, StudyDTO studyDTO) {
-        Optional<Study> optionalStudy = studyRepository.findById(BigInteger.valueOf(studyId));
+        Optional<Study> optionalStudy = studyRepository.findById(studyId);
 
         // 수정은 제목 + content만 바꿀 수 있다.
         if (optionalStudy.isPresent()) {
@@ -124,11 +124,11 @@ public class StudyServiceImpl implements StudyService {
 
     @Override
     public int deleteStudy(Long studyId) {
-        Optional<Study> optionalStudy = studyRepository.findById(BigInteger.valueOf(studyId));
+        Optional<Study> optionalStudy = studyRepository.findById(studyId);
 
         if (optionalStudy.isPresent()) {
             Study study = optionalStudy.get();
-            studyRepository.deleteById(BigInteger.valueOf(studyId));
+            studyRepository.deleteById(studyId);
             return 1;
         }
         return 0;

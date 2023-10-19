@@ -4,6 +4,7 @@ import com.kernel360.hackerthon.studyup.member.entity.Member;
 import com.kernel360.hackerthon.studyup.member.entity.TechStack;
 import com.kernel360.hackerthon.studyup.member.repository.MemberRepository;
 import com.kernel360.hackerthon.studyup.member.repository.TechStackRepository;
+import com.kernel360.hackerthon.studyup.study.entity.MemberType;
 import com.kernel360.hackerthon.studyup.study.entity.Study;
 import com.kernel360.hackerthon.studyup.study.entity.StudyMember;
 import com.kernel360.hackerthon.studyup.study.repository.StudyMemberRepository;
@@ -11,6 +12,8 @@ import com.kernel360.hackerthon.studyup.study.repository.StudyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 
@@ -37,6 +40,8 @@ public class DataLoader {
 //    private StudyReviewRepository studyReviewRepository;
 //    @Autowired
 //    private StudyScheduleRepository studyScheduleRepository;
+    @Enumerated(EnumType.STRING)  // Enum 타입을 문자열로 저장
+    private MemberType memberType;  // MemberType enum 필드 추가
 
 
     public void loadInitialData() throws InterruptedException {
@@ -104,19 +109,19 @@ public class DataLoader {
 
     private void createTechStacks() {
         TechStack java = TechStack.builder()
-                .TechName("Java")
+                .techName("Java")
                 .build();
 
         techStackRepository.save(java);
 
         TechStack python = TechStack.builder()
-                .TechName("Python")
+                .techName("Python")
                 .build();
 
         techStackRepository.save(python);
 
         TechStack javascript = TechStack.builder()
-                .TechName("JavaScript")
+                .techName("JavaScript")
                 .build();
 
         techStackRepository.save(javascript);
@@ -135,16 +140,16 @@ public class DataLoader {
     }
 
     private void createStudyMembers() {
-        Member member = memberRepository.findById(BigInteger.valueOf(1L))
+        Member member = memberRepository.findById(Long.valueOf(1L))
                 .orElseThrow(() -> new RuntimeException("멤버를 찾을 수 없습니다."));
 
-        Study study = studyRepository.findById(BigInteger.valueOf(1L))
+        Study study = studyRepository.findById(Long.valueOf(1L))
                 .orElseThrow(() -> new RuntimeException("스터디를 찾을 수 없습니다."));
 
         StudyMember studyMember = new StudyMember();
         studyMember.setStudy(study);
         studyMember.setMember(member);
-        studyMember.setMemberType('A');
+        studyMember.setMemberType(MemberType.LEADER);
         studyMember.setStudyJoinDate(LocalDateTime.now());
 
         studyMemberRepository.save(studyMember);

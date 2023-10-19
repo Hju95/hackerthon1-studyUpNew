@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface StudyMemberRepository extends JpaRepository<StudyMember, BigInteger> {
+public interface StudyMemberRepository extends JpaRepository<StudyMember, Long> {
     List<StudyMember> findAll();
 
-    List<BigInteger> findStudyMembersByStudyMemberId(BigInteger memberIds);
+    List<Long> findStudyMembersByStudyMemberId(Long memberIds);
 
-    Optional<StudyMember> findById(BigInteger id);
+    Optional<StudyMember> findById(Long id);
 
     StudyMember save(StudyMember studyMember);
 
