@@ -1,0 +1,62 @@
+header {
+    background-color: #000;
+    color: #fff;
+}
+
+main {
+    margin-top: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.box {
+    width: 250px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+p {
+    font-size: 16px;
+    display: flex;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.number {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.category {
+    font-size: 16px;
+}
+
+.status {
+    font-size: 16px;
+}
+
+.btn {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #000;
+}
+
+.btn-secondary {
+    background-color: #ccc;
+}
