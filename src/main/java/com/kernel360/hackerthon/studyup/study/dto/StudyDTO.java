@@ -22,7 +22,7 @@ public class StudyDTO {
     private LocalDateTime endDate;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-    private Date deletedAt;
+    private LocalDateTime  deletedAt;
 
     public StudyDTO(Study study) {
         this.studyTitle = study.getStudyTitle();

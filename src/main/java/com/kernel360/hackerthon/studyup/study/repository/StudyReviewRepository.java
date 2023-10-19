@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface StudyReviewRepository extends JpaRepository<StudyReview, BigInteger> {
+public interface StudyReviewRepository extends JpaRepository<StudyReview, Long> {
     List<StudyReview> findAll();
 
-    Optional<StudyReview> findById(BigInteger id);
+    Optional<StudyReview> findById(Long id);
 
     StudyReview save(StudyReview studyReview);
 

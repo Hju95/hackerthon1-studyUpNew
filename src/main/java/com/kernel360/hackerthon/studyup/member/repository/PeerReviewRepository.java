@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface PeerReviewRepository extends JpaRepository<PeerReview, BigInteger> {
+public interface PeerReviewRepository extends JpaRepository<PeerReview, Long> {
     List<PeerReview> findAll();
 
-    Optional<PeerReview> findById(BigInteger id);
+    Optional<PeerReview> findById(Long id);
 
     PeerReview save(PeerReview peerReview);
 

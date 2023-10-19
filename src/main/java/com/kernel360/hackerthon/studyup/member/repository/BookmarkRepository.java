@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface BookmarkRepository extends JpaRepository<Bookmark, BigInteger> {
     List<Bookmark> findAll();
 
-    Optional<Bookmark> findById(BigInteger id);
+    Optional<Bookmark> findByBookmarkId(Long id);
 
     Bookmark save(Bookmark bookmark);
 

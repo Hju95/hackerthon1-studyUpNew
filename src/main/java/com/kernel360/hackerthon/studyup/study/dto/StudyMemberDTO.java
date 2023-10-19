@@ -13,7 +13,7 @@ public class StudyMemberDTO {
     private StudyDTO study;
     private String nickname;
     private LocalDateTime studyJoinDate;
-    private Date studyWithdrawalDate;
+    private LocalDateTime studyWithdrawalDate;
 
     public StudyMemberDTO(StudyMember studyMember) {
         this.study = new StudyDTO(studyMember.getStudy());

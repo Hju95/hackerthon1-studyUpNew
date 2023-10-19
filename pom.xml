@@ -45,6 +45,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.6.15.Final</version> <!-- 이 버전을 최신 버전으로 변경해주세요 -->
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -59,6 +64,11 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<!--JVM 옵션 설정 -->
+					<jvmArguments>
+						--add-opens java.base/java.lang=ALL-UNNAMED
+					</jvmArguments>
+					<!-- End -->
 				</configuration>
 			</plugin>
 		</plugins>

@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TechStackRepository extends JpaRepository<TechStack, BigInteger> {
+public interface TechStackRepository extends JpaRepository<TechStack, Long> {
     List<TechStack> findAll();
 
-    Optional<TechStack> findById(BigInteger id);
+    Optional<TechStack> findById(Long id);
 
     TechStack save(TechStack techStack);
 

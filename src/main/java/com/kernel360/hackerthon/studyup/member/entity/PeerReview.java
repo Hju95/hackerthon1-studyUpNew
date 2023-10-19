@@ -1,27 +1,26 @@
 package com.kernel360.hackerthon.studyup.member.entity;
 
 import com.kernel360.hackerthon.studyup.study.entity.StudyMember;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Builder
+@Setter
+@Where(clause = "deleted_at IS NULL")
 public class PeerReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger peerReviewId;
+    private Long peerReviewId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
