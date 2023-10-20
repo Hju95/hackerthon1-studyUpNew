@@ -9,29 +9,29 @@
 <body>
     <h1>마이 페이지</h1>
     
-    <ul>
-        <%
-            // 여기에서 백엔드에서 받아온 스터디 목록을 반복하여 표시
-            List<Study> myStudies = (List<Study>) request.getAttribute("myStudies"); // 백엔드에서 받아온 스터디 목록
-            
-            if (myStudies != null && !myStudies.isEmpty()) {
-                for (Study study : myStudies) {
-        %>
-        <li>
-            <strong><%= study.getStudyName() %></strong>
-            <p>카테고리: <%= study.getCategory() %></p>
-            <p>상태: <%= study.getStatus() %></p>
-        </li>
-        <%
-                }
-            } else {
-        %>
-        <li>참여한 스터디가 없습니다.</li>
-        <%
-            }
-        %>
-    </ul>
-    
-    <button onclick="location.href='/studyDetail.jsp'">스터디 상세 정보로 이동</button>
+<%--    <ul>--%>
+<%--        <%--%>
+<%--            // 여기에서 백엔드에서 받아온 스터디 목록을 반복하여 표시--%>
+<%--            List<Study> myStudies = (List<Study>) request.getAttribute("myStudies"); // 백엔드에서 받아온 스터디 목록--%>
+
+<%--            if (myStudies != null && !myStudies.isEmpty()) {--%>
+<%--                for (Study study : myStudies) {--%>
+<%--        %>--%>
+<%--        <li>--%>
+<%--            <strong><%= study.getStudyName() %></strong>--%>
+<%--            <p>카테고리: <%= study.getCategory() %></p>--%>
+<%--            <p>상태: <%= study.getStatus() %></p>--%>
+<%--        </li>--%>
+<%--        <%--%>
+<%--                }--%>
+<%--            } else {--%>
+<%--        %>--%>
+<%--        <li>참여한 스터디가 없습니다.</li>--%>
+<%--        <%--%>
+<%--            }--%>
+<%--        %>--%>
+<%--    </ul>--%>
+<%--    --%>
+<%--    <button onclick="location.href='/studyDetail.jsp'">스터디 상세 정보로 이동</button>--%>
 </body>
 </html>

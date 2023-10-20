@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +6,6 @@
 </head>
 <body>
 <h1>StudyUp</h1>
-<p><a href="/study/list">스터디 구경하기</a></p>
+<p><a href="${pageContext.request.contextPath}/study/list">스터디 구경하기</a></p>
 </body>
 </html>
