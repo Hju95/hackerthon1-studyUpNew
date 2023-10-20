@@ -1,10 +1,11 @@
 package com.kernel360.hackerthon.studyup.member.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController // redirect 나오면 Controller로 수정
+@Controller // redirect 나오면 Controller로 수정
 @RequiredArgsConstructor
 @RequestMapping("/member")
 public class MemberController {
