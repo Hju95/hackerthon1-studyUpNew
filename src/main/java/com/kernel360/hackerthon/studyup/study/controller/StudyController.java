@@ -26,9 +26,9 @@ public class StudyController {
     @GetMapping("/list")
     public ModelAndView getAllStudies() {
         List<Study> studyList = studyService.getAllStudies();
+        System.out.println(studyList);
 
         ModelAndView view = new ModelAndView();
-        // "study/studyList"로 페이지구조 변경 예정
         view.setViewName("study/studyList");
         view.addObject("studyList", studyList);
 
@@ -43,7 +43,6 @@ public class StudyController {
         StudyGroupDetailDTO studyGroupDetailDTO = studyService.getStudyById(studyId);
 
         ModelAndView view = new ModelAndView();
-        // "study/studyList"로 페이지구조 변경 예정
         view.setViewName("study/studyDetail");
         view.addObject("studyGroupDetailDTO", studyGroupDetailDTO);
 
