@@ -55,12 +55,33 @@
             <artifactId>spring-boot</artifactId>
             <version>2.7.16</version>
         </dependency>
-		<!-- JSP 관련 의존성 -->
+		<!-- JSP 관련 의존성 START-->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!-- JSP 관련 의존성 END-->
+
+		<!-- jsp, jstl dependency START-->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<version>9.0.46</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
+		<!-- jsp, jstl dependency END-->
+		<!-- API dependency START -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+		</dependency>
+		<!-- API dependency END -->
 	</dependencies>
 
 	<build>

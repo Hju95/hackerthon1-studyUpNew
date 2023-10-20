@@ -4,6 +4,7 @@ import com.kernel360.hackerthon.studyup.study.dto.StudyGroupDetailDTO;
 import com.kernel360.hackerthon.studyup.study.entity.Study;
 import com.kernel360.hackerthon.studyup.study.service.StudyService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -11,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.math.BigInteger;
 import java.util.List;
 
-@RestController // redirect 나오면 Controller로 수정
+@Controller // redirect 나오면 Controller로 수정
 @RequiredArgsConstructor
 @RequestMapping("/study")
 public class StudyController {
