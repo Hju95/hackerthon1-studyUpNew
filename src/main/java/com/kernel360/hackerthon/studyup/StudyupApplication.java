@@ -1,6 +1,5 @@
 package com.kernel360.hackerthon.studyup;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,8 +7,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class StudyupApplication implements CommandLineRunner {
 
-	@Autowired
-	private DataLoader dataLoader;
+//	@Autowired
+//	private DataLoader dataLoader;
+
+	private final DataLoader dataLoader;
+
+	public StudyupApplication(DataLoader dataLoader) {
+		this.dataLoader = dataLoader;
+	}
 
 
 	public static void main(String[] args) {
